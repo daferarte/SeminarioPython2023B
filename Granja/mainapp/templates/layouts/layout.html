@@ -58,9 +58,10 @@
                         <div class="navbar-nav mx-auto">
                             <a href="{% url 'index'%}" class="nav-item nav-link active">Home</a>
                             <div class="nav-item dropdown">
-                                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Recolector</a>
+                                <a href="{% url 'mostrar_recolector' %}" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Recolector</a>
                                 <div class="dropdown-menu bg-light">
                                     <a href="{% url 'agregar_recolector'%}" class="dropdown-item">Agregar</a>
+                                    <a href="{% url 'mostrar_recolector'%}" class="dropdown-item">Mostrar</a>
                                 </div>
                             </div>
                             <a href="contact.html" class="nav-item nav-link">Contact</a>

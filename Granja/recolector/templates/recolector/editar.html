@@ -1,0 +1,79 @@
+{% extends 'layouts/layout.html' %} 
+
+{% block content %}
+{% load static %}
+
+<script>
+    function eliminarRecolector(id, gid=null) {
+        Swal.fire({
+            title: "Estas seguro que desea borrar el recolector?",
+            text: "esta accion no se puede deshacer!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Si, Borralo!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href="http://"+window.location.host+"/recolector/eliminar/"+id;
+            }
+        });
+    }
+</script>
+        
+ 
+
+<!-- Book Us Start -->
+<div class="container-fluid contact py-6 wow bounceInUp" data-wow-delay="0.1s">
+    <div class="container">
+        <div class="row g-0">
+            <div class="col-1">
+                <img src="{% static 'img/background-site.jpg'%}" class="img-fluid h-100 w-100 rounded-start" style="object-fit: cover; opacity: 0.7;" alt="">
+            </div>
+            <div class="col-10">
+                <div class="border-bottom border-top border-primary bg-light py-5 px-4">
+                    <div class="text-center">
+                        
+                        <h1 class="display-5 mb-5">Recolector {{recolector.nombres}}</h1>
+                    </div>
+                    <form method="post">
+                        {% csrf_token %}
+                        <div class="row g-4 form">
+                            <div class="col-lg-4 col-md-6">
+                                
+                                <input type="text" class="form-control border-primary p-2" placeholder="Cedula" name="cedula" value="{{recolector.cedula}}">
+                                
+                            </div>
+                            <div class="col-lg-4 col-md-6">
+                                <input type="text" class="form-control border-primary p-2" placeholder="Nombres" name="nombres" value="{{recolector.nombres}}">
+                            </div>
+                            <div class="col-lg-4 col-md-6">
+                                <input type="text" class="form-control border-primary p-2" placeholder="Apellidos" name="apellidos" value="{{recolector.apellido}}">
+                            </div>
+                            <div class="col-lg-4 col-md-6">
+                                <input type="text" class="form-control border-primary p-2" placeholder="Dirección" name="direccion" value="{{recolector.direccion}}">
+                            </div>
+                            <div class="col-lg-4 col-md-6">
+                                <input type="date" class="form-control border-primary p-2" placeholder="Fecha nacimiento" name="fecnac" value="{{recolector.fNacimiento|date:"d/m/Y"}}">
+                            </div>
+                            <div class="col-lg-4 col-md-6">
+                                <input type="mobile" class="form-control border-primary p-2" placeholder="Teléfono" name="telefono" value="{{recolector.telefono}}">
+                            </div>
+                            
+                            <div class="col-12 text-center">
+                                <button type="submit" class="btn btn-primary px-5 py-3 rounded-pill">Actualizar</button>
+                                <input type="button" class="btn btn-primary px-5 py-3 rounded-pill" onclick="eliminarRecolector({{recolector.pk}})" value="Eliminar" />
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="col-1">
+                <img src="{% static 'img/background-site.jpg'%}" class="img-fluid h-100 w-100 rounded-end" style="object-fit: cover; opacity: 0.7;" alt="">
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Book Us End -->
+
+{% endblock %}

@@ -2,7 +2,21 @@
 
 {% block content %}
 {% load static %}
-
+{% if messages %}
+    {% for message in messages %}
+        <div>
+            <script>
+                Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: "{{ message }}",
+                    showConfirmButton: false,
+                    timer: 3500
+                  });
+            </script>
+        </div>
+    {% endfor %}
+{% endif %}
 
 <!-- Team Start -->
 <div class="container-fluid team py-6">
@@ -23,6 +37,7 @@
                             <p class="text-white mb-0">Cumpleaños. {{recolector.fNacimiento}}</p>
                             <p class="text-white mb-0">Teléfono. {{recolector.telefono}}</p>
                             <p class="text-white mb-0">Edad. {{recolector.telefono}}</p>
+                            <a class="share btn btn-primary btn-md-square rounded-circle mb-2" href="{% url 'ver_recolector' recolector.pk %}"><i class="fas fa-share-alt"></i></a>
                         </div>
                     </div>
                 </div>
