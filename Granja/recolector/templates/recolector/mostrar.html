@@ -1,0 +1,37 @@
+{% extends 'layouts/layout.html' %} 
+
+{% block content %}
+{% load static %}
+
+
+<!-- Team Start -->
+<div class="container-fluid team py-6">
+    <div class="container">
+        <div class="text-center wow bounceInUp" data-wow-delay="0.1s">
+            <h1 class="display-5 mb-5">Nuestros Recolectores</h1>
+        </div>
+        <div class="row g-4">
+            {% for recolector in recolectores %}
+
+                <div class="col-lg-3 col-md-6 wow bounceInUp" data-wow-delay="0.1s">
+                    <div class="team-item rounded">
+                        <img class="img-fluid rounded-top " src="img/team-1.jpg" alt="">
+                        <div class="team-content text-center py-3 bg-dark rounded-bottom">
+                            <h4 class="text-primary">{{recolector.nombres}} {{recolector.apellido}}</h4>
+                            <p class="text-white mb-0">CC. {{recolector.cedula}}</p>
+                            <p class="text-white mb-0">Dirección. {{recolector.direccion}}</p>
+                            <p class="text-white mb-0">Cumpleaños. {{recolector.fNacimiento}}</p>
+                            <p class="text-white mb-0">Teléfono. {{recolector.telefono}}</p>
+                            <p class="text-white mb-0">Edad. {{recolector.telefono}}</p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+            
+            
+        </div>
+    </div>
+</div>
+<!-- Team End -->
+
+{% endblock %}

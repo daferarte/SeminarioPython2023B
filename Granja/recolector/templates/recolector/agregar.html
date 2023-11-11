@@ -1,0 +1,74 @@
+{% extends 'layouts/layout.html' %} 
+
+{% block content %}
+{% load static %}
+{% if messages %}
+    {% for message in messages %}
+        <div>
+            <script>
+                Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: "{{ message }}",
+                    showConfirmButton: false,
+                    timer: 3500
+                  });
+            </script>
+        </div>
+    {% endfor %}
+
+{% endif %}
+
+<!-- Book Us Start -->
+<div class="container-fluid contact py-6 wow bounceInUp" data-wow-delay="0.1s">
+    <div class="container">
+        <div class="row g-0">
+            <div class="col-1">
+                <img src="{% static 'img/background-site.jpg'%}" class="img-fluid h-100 w-100 rounded-start" style="object-fit: cover; opacity: 0.7;" alt="">
+            </div>
+            <div class="col-10">
+                <div class="border-bottom border-top border-primary bg-light py-5 px-4">
+                    <div class="text-center">
+                        
+                        <h1 class="display-5 mb-5">Bienvenido a Agregar Recolector</h1>
+                    </div>
+                    <form method="post">
+                        {% csrf_token %}
+                        <div class="row g-4 form">
+                            <div class="col-lg-4 col-md-6">
+                                
+                                <input type="text" class="form-control border-primary p-2" placeholder="Cedula" name="cedula">
+                                
+                            </div>
+                            <div class="col-lg-4 col-md-6">
+                                <input type="text" class="form-control border-primary p-2" placeholder="Nombres" name="nombres">
+                            </div>
+                            <div class="col-lg-4 col-md-6">
+                                <input type="text" class="form-control border-primary p-2" placeholder="Apellidos" name="apellidos">
+                            </div>
+                            <div class="col-lg-4 col-md-6">
+                                <input type="text" class="form-control border-primary p-2" placeholder="Dirección" name="direccion">
+                            </div>
+                            <div class="col-lg-4 col-md-6">
+                                <input type="date" class="form-control border-primary p-2" placeholder="Fecha nacimiento" name="fecnac">
+                            </div>
+                            <div class="col-lg-4 col-md-6">
+                                <input type="mobile" class="form-control border-primary p-2" placeholder="Teléfono" name="telefono">
+                            </div>
+                            
+                            <div class="col-12 text-center">
+                                <button type="submit" class="btn btn-primary px-5 py-3 rounded-pill">Agregar</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="col-1">
+                <img src="{% static 'img/background-site.jpg'%}" class="img-fluid h-100 w-100 rounded-end" style="object-fit: cover; opacity: 0.7;" alt="">
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Book Us End -->
+
+{% endblock %}
