@@ -89,7 +89,9 @@ class Recolector_APIView_List(APIView):
         return Response(serializer.data)
     
     def post(self, request, format=None):
-        serializer=RecolectorSerializer(data=request.data)
+        print(request.data.get('credential'))
+        serializer=RecolectorSerializer(data=request.data.get('credential'))
+        
         if(serializer.is_valid()):
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)

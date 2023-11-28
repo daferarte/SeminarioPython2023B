@@ -8,4 +8,5 @@ urlpatterns = [
     path('eliminar/<int:pk>',views.eliminar, name='eliminar_recolector'),
     path('v1/api',views.Recolector_APIView_List.as_view()),
     path('v1/api/<int:pk>',views.Recolector_APIView_Detail.as_view())
+    
 ]
